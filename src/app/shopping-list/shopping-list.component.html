@@ -1,0 +1,44 @@
+<p>shopping-list works!</p>
+<div class="container">
+  <div class="example-button-container">
+    <button
+    
+      mat-mini-fab
+      color="warn"
+      aria-label="Example icon button with a filter list icon"
+    >
+    <mat-icon (click)="onBtnClick()">add_shopping_cart</mat-icon>
+    </button>
+  </div>
+  <mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let items of shoppoingItems; let i = index">
+      <mat-card class="example-card">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-title> {{ items.price | currency: "INR" }}</mat-card-title>
+        <img mat-card-sm-image [src]="items.image" alt="Photo of a Shiba Inu" />
+        <mat-card-content>
+          <p>
+            {{ items.title }}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <!-- (change)="onChange(items.title, $event.target.checked)" -->
+          <!-- [(ngModel)]="isChecked" (change)="checkValue(isChecked?'A':'B') -->
+          <!-- name="country{{items.id}}" [(ngModel)]="items[i].checked" -->
+
+          <input
+            mat-checkbox
+            type="checkbox"
+            (change)="changeValue(items, $event)"
+          />
+          <label>{{ items.id }}</label>
+          {{ data }}
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
